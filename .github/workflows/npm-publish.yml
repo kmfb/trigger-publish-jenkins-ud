@@ -16,6 +16,8 @@ jobs:
       # move repository files to workflow environment
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
+        with:
+          registry-url: 'https://registry.npmjs.org'
 
       # make build
       - run: bun install
