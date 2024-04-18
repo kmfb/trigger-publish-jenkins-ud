@@ -1,0 +1,16 @@
+{
+  "name": "publish-work",
+  "module": "index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "pub": "bun src/index.ts" 
+  },
+  "type": "module"
+}
