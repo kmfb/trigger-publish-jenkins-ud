@@ -16,11 +16,16 @@ interface LoginData {
 }
 
 const loginData: LoginData = {
-  j_username: Bun.env.PW_USERNAME,
-  j_password: Bun.env.PW_PASSWORD,
+  j_username: process.env.PW_USERNAME,
+  j_password: process.env.PW_PASSWORD,
   from: "/",
   Submit: "Sign+in",
   remember_me: "on",
+};
+
+export const getBranch = () => {
+  const args = process.argv.slice(2);
+  return args[0];
 };
 
 export async function login(): Promise<any> {
@@ -67,22 +72,19 @@ export async function build({
   Cookie: string;
 }) {
   // Example usage
-  const url =
-    `${BASE_URL}/view/${encodeURI(Bun.env.PW_PROJECT_NAME)}/build?delay=0sec`;
+  const url = `${BASE_URL}/view/${encodeURI(
+    process.env.PW_PROJECT_NAME
+  )}/build?delay=0sec`;
   const body = new URLSearchParams({
     name: "$branch",
-    value: Bun.env.PW_BRANCH,
+    value: getBranch(),
     statusCode: "303",
     redirectTo: ".",
     "Jenkins-Crumb": crumbValue,
     json: JSON.stringify({
-      // parameter: [
-      //   { name: "$branch", value: Bun.env.PW_BRANCH },
-      //   { name: "", value: "" },
-      // ],
       parameter: {
         name: "branch",
-        value: Bun.env.PW_BRANCH,
+        value: getBranch(),
       },
       statusCode: "303",
       redirectTo: ".",

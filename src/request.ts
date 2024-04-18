@@ -3,7 +3,7 @@ type TRequest = (
   init?: FetchRequestInit
 ) => Promise<Response>;
 
-export const BASE_URL = Bun.env.PW_BASE_URL
+export const BASE_URL = process.env.PW_BASE_URL;
 const getHeader = (h?: HeadersInit) => {
   const headers = {
     Accept:

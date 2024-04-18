@@ -12,21 +12,18 @@ const getCookieStr = () => {
 }
 
 const main = async () => {
-
-    const sckLogin = await login()
-    addCookies(sckLogin)
-
-    const response = await getIndexPage({
-        Cookie: getCookieStr(),
-    })
-    addCookies(response.headers.get("set-cookie"))
-    const html = await response.text()
-    const crumbValue = getCrumbValue(html)
-    build({
-        crumbValue: crumbValue,
-        Cookie: getCookieStr(),
-    })
-    
-}
+  const sckLogin = await login();
+  addCookies(sckLogin);
+  const response = await getIndexPage({
+    Cookie: getCookieStr(),
+  });
+  addCookies(response.headers.get("set-cookie"));
+  const html = await response.text();
+  const crumbValue = getCrumbValue(html);
+  build({
+    crumbValue: crumbValue,
+    Cookie: getCookieStr(),
+  });
+};
 
 main()

@@ -1,16 +1,18 @@
 {
-  "name": "publish-work",
+  "name": "@kmfb/trigger-publish-jenkins-ud",
   "module": "index.ts",
+  "version": "0.1",
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
+  "main": "out/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "bun scripts/build.ts",
     "test": "jest",
-    "pub": "bun src/index.ts" 
+    "pub": "bun src/index.ts -- $(git rev-parse --abbrev-ref HEAD)"
   },
   "type": "module"
 }
