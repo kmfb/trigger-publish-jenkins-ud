@@ -1,0 +1,27 @@
+name: Publish package to npm
+
+# trigger this workflow only when a push of specific tags occurs
+on:
+  push:
+    tags:
+      - v1.**
+  workflow_dispatch: # Add this line to enable manual triggering
+
+jobs:
+  # build is the job name (could be anything)
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # move repository files to workflow environment
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+
+      # make build
+      - run: bun install
+      - run: bun run build
+
+      # publish to npm
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
