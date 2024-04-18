@@ -2,27 +2,7 @@ type TRequest = (
   input: string | URL | Request,
   init?: FetchRequestInit
 ) => Promise<Response>;
-export const getBaseServer = () => {
-  return "test2";
-  const args = Bun.argv.slice(2);
-  const cEnv = args[1];
-  return cEnv;
-};
 
-export const getBaseBranch = () => {
-  return "feat/vite-build";
-  const args = Bun.argv.slice(2);
-  const branch = args[0];
-  return branch;
-};
-const getBaseUrl = () => {
-  const urls: any = {
-    test: "http://10.15.100.164:8080",
-    test2: "http://10.15.100.164:8080",
-    prod: "http://10.15.3.165:8080",
-  };
-  return urls[getBaseServer()];
-};
 export const BASE_URL = Bun.env.PW_BASE_URL
 const getHeader = (h?: HeadersInit) => {
   const headers = {
