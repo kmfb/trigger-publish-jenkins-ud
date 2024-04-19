@@ -7,6 +7,9 @@ on:
   release:
     types: [created]
   workflow_dispatch: # Add this line to enable manual triggering
+  push:
+    tags:
+      - v0.**
 
 jobs:
   build:
