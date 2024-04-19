@@ -3,8 +3,10 @@ lockfileVersion: 5.4
 specifiers:
   '@rollup/plugin-typescript': ^11.1.6
   '@types/bun': latest
+  '@types/prompts': ^2.4.9
   '@types/shelljs': ^0.8.15
   dotenv: ^16.4.5
+  prompts: ^2.4.2
   rollup: ^4.14.3
   shelljs: ^0.8.5
   tslib: ^2.6.2
@@ -12,6 +14,7 @@ specifiers:
 
 dependencies:
   dotenv: 16.4.5
+  prompts: 2.4.2
   shelljs: 0.8.5
   tslib: 2.6.2
   typescript: 5.4.5
@@ -19,6 +22,7 @@ dependencies:
 devDependencies:
   '@rollup/plugin-typescript': 11.1.6_vqwrlh624psxzlu7sxxteaz2ui
   '@types/bun': 1.1.0
+  '@types/prompts': 2.4.9
   '@types/shelljs': 0.8.15
   rollup: 4.14.3
 
@@ -220,6 +224,13 @@ packages:
       undici-types: 5.26.5
     dev: true
 
+  /@types/prompts/2.4.9:
+    resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
+    dependencies:
+      '@types/node': 20.11.30
+      kleur: 3.0.3
+    dev: true
+
   /@types/shelljs/0.8.15:
     resolution: {integrity: sha512-vzmnCHl6hViPu9GNLQJ+DZFd6BQI2DBTUeOvYHqkWQLMfKAAQYMb/xAmZkTogZI/vqXHCWkqDRymDI5p0QTi5Q==}
     dependencies:
@@ -317,6 +328,10 @@ packages:
     dependencies:
       hasown: 2.0.2
 
+  /kleur/3.0.3:
+    resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
+    engines: {node: '>=6'}
+
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -341,6 +356,14 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
+
+  /prompts/2.4.2:
+    resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
+    engines: {node: '>= 6'}
+    dependencies:
+      kleur: 3.0.3
+      sisteransi: 1.0.5
+    dev: false
 
   /rechoir/0.6.2:
     resolution: {integrity: sha512-HFM8rkZ+i3zrV+4LQjwQ0W+ez98pApMGM3HUrN04j3CqzPOzl9nmP15Y8YXNm8QHGv/eacOVEjqhmWpkRV0NAw==}
@@ -391,6 +414,10 @@ packages:
       glob: 7.2.3
       interpret: 1.4.0
       rechoir: 0.6.2
+    dev: false
+
+  /sisteransi/1.0.5:
+    resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
     dev: false
 
   /supports-preserve-symlinks-flag/1.0.0:

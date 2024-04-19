@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { build, getBranch, getCrumbValue, getIndexPage, login } from "./util";
-
+import prompts from "prompts";
 const cookieSet = new Set();
 
 const addCookies = (setCookieHeader: any) => {
@@ -17,10 +17,13 @@ const main = async () => {
   console.log("Current branch is:", currentBranch);
   // Add validation for production mode
   if (process.env.PW_MODE === "production") {
-    const userConfirmation = prompt(
-      `You are about to build and publish a production version. Are you sure? (yes/no)`
-    );
-    if (userConfirmation !== "yes") {
+    const response = await prompts({
+      type: "text",
+      name: "value",
+      message: `You are about to build and publish a production version. Are you sure? (Y/N)`,
+    });
+
+    if (response.value !== "y" && response.value !== "Y") {
       console.log("Operation cancelled by the user.");
       return;
     }
