@@ -1,6 +1,6 @@
 {
   "name": "@kmfb/trigger-publish-jenkins-ud",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/bun": "latest",
@@ -13,7 +13,8 @@
   },
   "main": "out/index.js",
   "files": [
-    "out"
+    "out",
+    "!node_modules"
   ],
   "bin": {
     "trigger-publish-jenkins": "out/index.js"
