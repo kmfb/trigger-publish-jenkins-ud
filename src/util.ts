@@ -23,10 +23,27 @@ const loginData: LoginData = {
   remember_me: "on",
 };
 
+export function executeCommand(command: string) {
+  try {
+    // Check if the command is available
+    execSync(`command -v ${command.split(" ")[0]}`, { stdio: "ignore" });
+
+    // Execute the command
+    const output = execSync(command).toString();
+    return output;
+  } catch (error) {
+    console.error(`Error executing command "${command}":`, error);
+    return null;
+  }
+}
+
 export const getBranch = () => {
-  const defaultBranch = execSync("git rev-parse --abbrev-ref HEAD")
-    .toString()
-    .trim();
+  const commandRes = executeCommand("git rev-parse --abbrev-ref HEAD");
+  if (!commandRes) {
+    console.error("Error getting branch name.");
+    return null;
+  }
+  const defaultBranch = commandRes.trim().toString();
 
   const args = process.argv.slice(2);
   if (args.length === 0) {
@@ -98,7 +115,7 @@ export async function build({
       "Jenkins-Crumb": crumbValue,
     }),
     Submit: "Build",
-  });
+  } as any);
 
   return request(url, {
     method: "POST",
@@ -107,5 +124,4 @@ export async function build({
     },
     body,
   });
-    
 }
