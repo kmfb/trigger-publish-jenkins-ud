@@ -20,10 +20,19 @@ const main = async () => {
   addCookies(response.headers.get("set-cookie"));
   const html = await response.text();
   const crumbValue = getCrumbValue(html);
-  build({
-    crumbValue: crumbValue,
-    Cookie: getCookieStr(),
-  });
+  try {
+    const responseBuild = await build({
+      crumbValue: crumbValue,
+      Cookie: getCookieStr(),
+    });
+    const text = await responseBuild.statusText;
+    console.log("Build response:", text);
+  } catch (error) {
+    console.error("Error during build:", error);
+    throw error;
+  }
+
+  
 };
 
 main()

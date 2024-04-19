@@ -93,20 +93,12 @@ export async function build({
     Submit: "Build",
   });
 
-  request(url, {
+  return request(url, {
     method: "POST",
     headers: {
       Cookie,
     },
     body,
-  })
-    .then(async (response) => {
-      console.log("Response:", response);
-      const text = await response.text();
-      console.log("Text:", text);
-      // Handle the response
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  });
+    
 }

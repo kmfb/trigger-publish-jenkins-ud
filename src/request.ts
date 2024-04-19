@@ -34,7 +34,7 @@ const request: TRequest = (input: URL | RequestInfo, init?: FetchRequestInit) =>
     
     ...init,
     headers,
-    proxy: "http://localhost:8888",
+
   });
 };
 
