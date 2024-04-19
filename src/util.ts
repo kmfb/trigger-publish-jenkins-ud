@@ -1,5 +1,6 @@
 import request, { BASE_URL } from "./request";
 import { execSync } from "child_process";
+import shell from "shelljs";
 export const getCrumbValue = (html: string) => {
   const crumbValueRegex = /data-crumb-value="(.*?)"/;
   const match = crumbValueRegex.exec(html);
@@ -26,10 +27,15 @@ const loginData: LoginData = {
 export function executeCommand(command: string) {
   try {
     // Check if the command is available
-    execSync(`command -v ${command.split(" ")[0]}`, { stdio: "ignore" });
+    if (!shell.which(command.split(" ")[0])) {
+      shell.echo(
+        "Sorry, this script requires the command and it is not available"
+      );
+      shell.exit(1);
+    }
 
     // Execute the command
-    const output = execSync(command).toString();
+    const output = shell.exec(command);
     return output;
   } catch (error) {
     console.error(`Error executing command "${command}":`, error);
