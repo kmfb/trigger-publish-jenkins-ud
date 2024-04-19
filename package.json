@@ -18,7 +18,7 @@
   "scripts": {
     "build": "bun scripts/build.ts",
     "test": "jest",
-    "pub": "bun src/index.ts -- $(git rev-parse --abbrev-ref HEAD)"
+    "pub": "bun src/index.ts"
   },
   "type": "module"
 }

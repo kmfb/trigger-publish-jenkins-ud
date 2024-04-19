@@ -4,5 +4,6 @@ declare module "bun" {
       PW_PASSWORD: string;
       PW_BASE_URL: string;
       PW_PROJECT_NAME: string;
+      PW_MODE: "production" | "development";
     }
   }

@@ -1,5 +1,5 @@
 import request, { BASE_URL } from "./request";
-
+import { execSync } from "child_process";
 export const getCrumbValue = (html: string) => {
   const crumbValueRegex = /data-crumb-value="(.*?)"/;
   const match = crumbValueRegex.exec(html);
@@ -24,7 +24,14 @@ const loginData: LoginData = {
 };
 
 export const getBranch = () => {
+  const defaultBranch = execSync("git rev-parse --abbrev-ref HEAD")
+    .toString()
+    .trim();
+
   const args = process.argv.slice(2);
+  if (args.length === 0) {
+    return defaultBranch;
+  }
   return args[0];
 };
 
