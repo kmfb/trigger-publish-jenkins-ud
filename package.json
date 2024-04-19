@@ -1,12 +1,14 @@
 {
   "name": "@kmfb/trigger-publish-jenkins-ud",
-  "module": "index.ts",
   "version": "0.1.7",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/bun": "latest",
-    "@types/shelljs": "^0.8.15"
+    "@types/shelljs": "^0.8.15",
+    "rollup": "^4.14.3"
   },
   "peerDependencies": {
+    "tslib": "^2.6.2",
     "typescript": "^5.0.0"
   },
   "main": "out/index.js",
@@ -17,12 +19,12 @@
     "trigger-publish-jenkins": "out/index.js"
   },
   "scripts": {
-    "build": "bun scripts/build.ts",
+    "build": "rollup -c",
     "test": "jest",
     "pub": "bun src/index.ts"
   },
-  "type": "module",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "shelljs": "^0.8.5"
   }
 }

@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { build, getBranch, getCrumbValue, getIndexPage, login } from "./util";
 
 const cookieSet = new Set();

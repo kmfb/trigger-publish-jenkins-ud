@@ -21,7 +21,7 @@ const loginData: LoginData = {
   from: "/",
   Submit: "Sign+in",
   remember_me: "on",
-};
+} as any;
 
 export function executeCommand(command: string) {
   try {
