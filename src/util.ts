@@ -1,5 +1,4 @@
 import request, { BASE_URL } from "./request";
-import { execSync } from "child_process";
 import shell from "shelljs";
 export const getCrumbValue = (html: string) => {
   const crumbValueRegex = /data-crumb-value="(.*?)"/;
