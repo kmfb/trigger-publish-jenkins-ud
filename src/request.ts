@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 type TRequest = (
   input: string | URL | Request,
   init?: FetchRequestInit
@@ -25,16 +27,16 @@ const getHeader = (h?: HeadersInit) => {
   return headers;
 };
 
-const request: TRequest = (input: URL | RequestInfo, init?: FetchRequestInit) => {
+const request: TRequest = (
+  input: URL | RequestInfo,
+  init?: FetchRequestInit
+) => {
   const headers = {
     ...getHeader(init?.headers),
-    
   };
   return fetch(input, {
-    
     ...init,
     headers,
-
   });
 };
 
