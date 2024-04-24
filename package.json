@@ -1,9 +1,10 @@
 {
   "name": "@kmfb/trigger-publish-jenkins-ud",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/bun": "latest",
+    "@types/node-fetch": "^2.6.11",
     "@types/prompts": "^2.4.9",
     "@types/shelljs": "^0.8.15",
     "rollup": "^4.14.3"
@@ -27,7 +28,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "node-fetch": "^3.3.2",
+    "node-fetch": "^2.7.0",
     "prompts": "^2.4.2",
     "shelljs": "^0.8.5"
   }
