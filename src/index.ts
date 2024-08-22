@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 import "dotenv/config";
 import { build, getBranch, getCrumbValue, getIndexPage, login } from "./util";
 import prompts from "prompts";
@@ -13,7 +15,7 @@ const getCookieStr = () => {
 };
 
 const main = async () => {
-  const currentBranch = getBranch();
+  const currentBranch = await getBranch();
   console.log("Current branch is:", currentBranch);
   // Add validation for production mode
   if (process.env.PW_MODE === "production") {
@@ -54,4 +56,7 @@ const main = async () => {
   }
 };
 
-main();
+// 检查是否作为脚本直接运行
+if (import.meta.main) {
+  main();
+}

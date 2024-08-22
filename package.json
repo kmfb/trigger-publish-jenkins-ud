@@ -1,17 +1,12 @@
 {
   "name": "@kmfb/trigger-publish-jenkins-ud",
-  "version": "0.1.11",
+  "version": "0.2.0",
+  "type": "module",
   "devDependencies": {
-    "@rollup/plugin-typescript": "^11.1.6",
     "@types/bun": "latest",
     "@types/node-fetch": "^2.6.11",
     "@types/prompts": "^2.4.9",
-    "@types/shelljs": "^0.8.15",
-    "rollup": "^4.14.3"
-  },
-  "peerDependencies": {
-    "tslib": "^2.6.2",
-    "typescript": "^5.0.0"
+    "@types/shelljs": "^0.8.15"
   },
   "main": "out/index.js",
   "files": [
@@ -22,14 +17,14 @@
     "trigger-publish-jenkins": "out/index.js"
   },
   "scripts": {
-    "build": "rollup -c",
-    "test": "jest",
-    "pub": "bun src/index.ts"
+    "build": "bun build src/index.ts --outdir out --target node",
+    "test": "bun test",
+    "start": "bun run src/index.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
+    "execa": "^9.3.1",
     "node-fetch": "^2.7.0",
-    "prompts": "^2.4.2",
-    "shelljs": "^0.8.5"
+    "prompts": "^2.4.2"
   }
 }
