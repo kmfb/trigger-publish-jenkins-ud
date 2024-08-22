@@ -1,5 +1,5 @@
 import request, { BASE_URL } from "./request";
-import shell from "shelljs";
+import { execa } from "execa";
 export const getCrumbValue = (html: string) => {
   const crumbValueRegex = /data-crumb-value="(.*?)"/;
   const match = crumbValueRegex.exec(html);
@@ -23,32 +23,24 @@ const loginData: LoginData = {
   remember_me: "on",
 } as any;
 
-export function executeCommand(command: string) {
+export async function executeCommand(command: string) {
   try {
-    // Check if the command is available
-    if (!shell.which(command.split(" ")[0])) {
-      shell.echo(
-        "Sorry, this script requires the command and it is not available"
-      );
-      shell.exit(1);
-    }
-
-    // Execute the command
-    const output = shell.exec(command);
-    return output;
+    const [cmd, ...args] = command.split(" ");
+    const { stdout } = await execa(cmd, args);
+    return stdout;
   } catch (error) {
-    console.error(`Error executing command "${command}":`, error);
+    console.error(`执行命令 "${command}" 时出错:`, error);
     return null;
   }
 }
 
-export const getBranch = () => {
-  const commandRes = executeCommand("git rev-parse --abbrev-ref HEAD");
+export const getBranch = async () => {
+  const commandRes = await executeCommand("git rev-parse --abbrev-ref HEAD");
   if (!commandRes) {
-    console.error("Error getting branch name.");
+    console.error("获取分支名称时出错。");
     return null;
   }
-  const defaultBranch = commandRes.trim().toString();
+  const defaultBranch = commandRes.trim();
 
   const args = process.argv.slice(2);
   if (args.length === 0) {
