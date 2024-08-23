@@ -98,14 +98,14 @@ export async function build({
   )}/build?delay=0sec`;
   const body = new URLSearchParams({
     name: "$branch",
-    value: getBranch(),
+    value: await getBranch(),
     statusCode: "303",
     redirectTo: ".",
     "Jenkins-Crumb": crumbValue,
     json: JSON.stringify({
       parameter: {
         name: "branch",
-        value: getBranch(),
+        value: await getBranch(),
       },
       statusCode: "303",
       redirectTo: ".",
